@@ -1,13 +1,16 @@
 import type { IUser } from '../../@types/IUser';
 
 import type { ICreateUserRepository } from '../../interfaces/repositories/user';
-import type { IPasswordHashAdapter } from '../../interfaces/adapters/password-hash';
-import type { IIdGeneratorAdapter } from '../../interfaces/adapters/id-generator';
+import type {
+  IPasswordHashAdapter,
+  IIdGeneratorAdapter,
+} from '../../interfaces/adapters';
 
 export class CreateUserUseCase {
   private createUserRepository: ICreateUserRepository;
   private idGeneratorAdapter: IIdGeneratorAdapter;
   private passwordHashAdapter: IPasswordHashAdapter;
+
   constructor(
     createUserRepository: ICreateUserRepository,
     idGeneratorAdapter: IIdGeneratorAdapter,
