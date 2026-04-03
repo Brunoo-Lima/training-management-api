@@ -1,11 +1,12 @@
 {
   "name": "training",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "./src/server.ts",
   "scripts": {
+    "prepare": "husky",
+    "postinstall": "npx husky install",
     "dev": "node --watch src/server.ts",
-    "prepare": "husky"
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
