@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "main": "./src/server.ts",
   "scripts": {
+    "postinstall": "prisma generate",
     "dev": "tsx watch src/server.ts",
-    "lint": "eslint ."
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "eslint:check": "eslint src --ext .ts"
   },
   "keywords": [],
   "author": "",

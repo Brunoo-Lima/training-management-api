@@ -1,45 +1,8 @@
-/*
-  Warnings:
+-- CreateEnum
+CREATE TYPE "StatusReading" AS ENUM ('READING', 'COMPLETED', 'WISHLIST', 'ABANDONED');
 
-  - You are about to drop the `Book` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Goal` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Note` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `ReadingLog` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `User` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE "Book" DROP CONSTRAINT "Book_user_id_fkey";
-
--- DropForeignKey
-ALTER TABLE "Goal" DROP CONSTRAINT "Goal_user_id_fkey";
-
--- DropForeignKey
-ALTER TABLE "Note" DROP CONSTRAINT "Note_book_id_fkey";
-
--- DropForeignKey
-ALTER TABLE "Note" DROP CONSTRAINT "Note_user_id_fkey";
-
--- DropForeignKey
-ALTER TABLE "ReadingLog" DROP CONSTRAINT "ReadingLog_book_id_fkey";
-
--- DropForeignKey
-ALTER TABLE "ReadingLog" DROP CONSTRAINT "ReadingLog_user_id_fkey";
-
--- DropTable
-DROP TABLE "Book";
-
--- DropTable
-DROP TABLE "Goal";
-
--- DropTable
-DROP TABLE "Note";
-
--- DropTable
-DROP TABLE "ReadingLog";
-
--- DropTable
-DROP TABLE "User";
+-- CreateEnum
+CREATE TYPE "GoalsType" AS ENUM ('DAILY_PAGES', 'BOOKS_PER_MONTH', 'BOOKS_PER_YEAR');
 
 -- CreateTable
 CREATE TABLE "users" (
