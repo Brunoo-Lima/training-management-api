@@ -23,6 +23,4 @@ const createUserSchema = z.strictObject(
   },
 );
 
-export type ICreateUserSchema = z.infer<typeof createUserSchema>;
-
 export { createUserSchema };
