@@ -1,12 +1,21 @@
 import { IdGeneratorAdapter, PasswordHashAdapter } from '../../adapters';
-import { CreateUserController, DeleteUserController } from '../../controllers';
+import {
+  CreateUserController,
+  DeleteUserController,
+  GetUserByIdController,
+} from '../../controllers';
 import {
   PostgresCreateUserRepository,
   PostgresDeleteUserRepository,
   PostgresGetUserByEmailRepository,
+  PostgresGetUserByIdRepository,
 } from '../../repositories/postgres';
 
-import { CreateUserUseCase, DeleteUserUseCase } from '../../use-cases';
+import {
+  CreateUserUseCase,
+  DeleteUserUseCase,
+  GetUserByIdUseCase,
+} from '../../use-cases';
 
 export const makeCreateUseController = () => {
   const createUserRepository = new PostgresCreateUserRepository();
@@ -32,4 +41,13 @@ export const makeDeleteUserController = () => {
   const deleteUserController = new DeleteUserController(deleteUserUseCase);
 
   return deleteUserController;
+};
+
+export const makeGetUserByIdController = () => {
+  const getUserByIdRepository = new PostgresGetUserByIdRepository();
+  const getUserByIdUseCase = new GetUserByIdUseCase(getUserByIdRepository);
+
+  const getUserByIdController = new GetUserByIdController(getUserByIdUseCase);
+
+  return getUserByIdController;
 };
