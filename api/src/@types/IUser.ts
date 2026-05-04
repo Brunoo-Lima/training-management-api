@@ -9,7 +9,4 @@ export interface IUser {
 
 export type IUserSafe = Omit<IUser, 'password'>;
 
-export type IUpdateUser = Omit<
-  IUser,
-  'id' | 'created_at' | 'updated_at' | 'password'
->;
+export type IUpdateUser = Omit<IUser, 'id' | 'created_at'>;
