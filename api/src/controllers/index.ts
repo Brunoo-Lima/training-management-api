@@ -5,3 +5,4 @@ export * from './user/get-user-by-id';
 export * from './book/create-book';
 
 export * from './auth/login';
+export * from './auth/refresh-token';
