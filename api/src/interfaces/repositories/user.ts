@@ -9,5 +9,5 @@ export interface IGetUserByEmailRepository {
 }
 
 export interface IDeleteUserRepository {
-  execute(id: string): Promise<void>;
+  execute(userId: string): Promise<void>;
 }
