@@ -4,6 +4,7 @@ export * from './user/get-user-by-id';
 export * from './user/update-user';
 
 export * from './book/create-book';
+export * from './book/get-book-by-id';
 
 export * from './auth/login';
 export * from './auth/refresh-token';
