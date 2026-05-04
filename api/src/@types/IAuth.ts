@@ -1,3 +1,4 @@
+import type { JwtPayload } from 'jsonwebtoken';
 import type { IUserSafe } from './IUser';
 
 export interface ITokens {
@@ -7,4 +8,8 @@ export interface ITokens {
 
 export type IAuth = IUserSafe & {
   tokens: ITokens;
+};
+
+export type IDecodedToken = JwtPayload & {
+  userId: string;
 };
