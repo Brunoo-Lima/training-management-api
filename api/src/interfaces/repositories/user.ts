@@ -7,3 +7,7 @@ export interface ICreateUserRepository {
 export interface IGetUserByEmailRepository {
   execute(email: string): Promise<IUser | null>;
 }
+
+export interface IDeleteUserRepository {
+  execute(id: string): Promise<void>;
+}
