@@ -11,3 +11,7 @@ export interface IGetUserByEmailRepository {
 export interface IDeleteUserRepository {
   execute(userId: string): Promise<IUser>;
 }
+
+export interface IGetUserByIdRepository {
+  execute(userId: string): Promise<IUser | null>;
+}
