@@ -16,7 +16,7 @@ export class GetBookByIdController {
     this.getBookByIdUseCase = getBookByIdUseCase;
   }
 
-  async handle(request: Request) {
+  async execute(request: Request) {
     try {
       const id = request.params.id as string;
 
