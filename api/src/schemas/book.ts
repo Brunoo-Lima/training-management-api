@@ -45,3 +45,16 @@ const createBookSchema = z.strictObject(
 );
 
 export { createBookSchema };
+
+export const updateBookSchema = createBookSchema.partial().refine(
+  (data) => {
+    if (data.start_date && data.end_date) {
+      return data.end_date >= data.start_date;
+    }
+
+    return true;
+  },
+  {
+    message: 'End date must be greater than or equal to start date',
+  },
+);
