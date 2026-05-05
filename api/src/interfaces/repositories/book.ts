@@ -15,3 +15,7 @@ export interface IGetBookByIdRepository {
 export interface IGetMyBooksRepository {
   execute(userId: string): Promise<IBook[]>;
 }
+
+export interface IDeleteBookRepository {
+  execute(bookId: string): Promise<void>;
+}

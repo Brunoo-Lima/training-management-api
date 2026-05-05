@@ -13,8 +13,8 @@ export class InvalidBookDatesError extends Error {
 }
 
 export class BookNotFoundError extends Error {
-  constructor() {
-    super('Book not found');
+  constructor(bookId?: string) {
+    super(`Book with id ${bookId ?? 'unknown'} not found`);
     this.name = 'BookNotFoundError';
   }
 }
