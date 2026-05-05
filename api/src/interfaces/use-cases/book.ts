@@ -7,3 +7,7 @@ export interface ICreateBookUseCase {
 export interface IGetBookByIdUseCase {
   execute(bookId: string): Promise<IBook | null>;
 }
+
+export interface IGetMyBooksUseCase {
+  execute(userId: string): Promise<IBook[]>;
+}

@@ -11,3 +11,7 @@ export interface IGetBookByTitleRepository {
 export interface IGetBookByIdRepository {
   execute(bookId: string): Promise<IBook | null>;
 }
+
+export interface IGetMyBooksRepository {
+  execute(userId: string): Promise<IBook[]>;
+}
