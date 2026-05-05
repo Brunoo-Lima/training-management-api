@@ -14,6 +14,7 @@ import {
   InvalidBookDatesError,
 } from '../../errors';
 import { updateBookSchema } from '../../schemas';
+import { ZodError } from 'zod';
 
 export class UpdateBookController {
   private updateBookUseCase: IUpdateBookUseCase;
@@ -51,6 +52,10 @@ export class UpdateBookController {
 
       return ok(updatedBook);
     } catch (error) {
+      if (error instanceof ZodError) {
+        return badRequest({ message: error.issues[0]?.message });
+      }
+
       if (error instanceof BookNotFoundError) {
         return bookNotFoundResponse();
       }
