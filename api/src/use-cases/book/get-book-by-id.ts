@@ -8,10 +8,10 @@ export class GetBookByIdUseCase {
     this.getBookByIdRepository = getBookByIdRepository;
   }
 
-  async execute(bookId: string) {
+  async execute(bookId: string, userId: string) {
     const book = await this.getBookByIdRepository.execute(bookId);
 
-    if (!book) {
+    if (!book || book.user_id !== userId) {
       throw new BookNotFoundError();
     }
 
