@@ -4,6 +4,7 @@ import {
   makeDeleteBookController,
   makeGetBookByIdController,
   makeGetMyBooksController,
+  makeUpdateBookController,
 } from '../factories/controllers';
 import { auth } from '../middlewares/auth';
 
@@ -52,5 +53,15 @@ bookRoutes.delete(
     return response.status(statusCode).send(body);
   },
 );
+
+bookRoutes.patch('/:id', auth, async (request: Request, response: Response) => {
+  const updateBookController = makeUpdateBookController();
+
+  request.params.userId = request.userId as string;
+
+  const { statusCode, body } = await updateBookController.execute(request);
+
+  return response.status(statusCode).send(body);
+});
 
 export { bookRoutes };
