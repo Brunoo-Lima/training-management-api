@@ -16,7 +16,7 @@ export class DeleteBookUseCase {
     this.getBookByIdRepository = getBookByIdRepository;
   }
 
-  async execute(bookId: string, userId: string): Promise<void> {
+  async execute(bookId: string, userId: string) {
     const book = await this.getBookByIdRepository.execute(bookId);
 
     if (!book) {

@@ -13,5 +13,5 @@ export interface IGetMyBooksUseCase {
 }
 
 export interface IDeleteBookUseCase {
-  execute(bookId: string, userId: string): Promise<void>;
+  execute(bookId: string, userId: string): Promise<IBook | null>;
 }

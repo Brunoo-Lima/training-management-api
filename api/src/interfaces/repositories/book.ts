@@ -17,5 +17,5 @@ export interface IGetMyBooksRepository {
 }
 
 export interface IDeleteBookRepository {
-  execute(bookId: string): Promise<void>;
+  execute(bookId: string): Promise<IBook | null>;
 }
