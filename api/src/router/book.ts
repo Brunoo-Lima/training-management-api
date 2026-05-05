@@ -21,6 +21,8 @@ bookRoutes.post('/', auth, async (request: Request, response: Response) => {
 bookRoutes.get('/:id', auth, async (request: Request, response: Response) => {
   const getBookByIdController = makeGetBookByIdController();
 
+  request.params.userId = request.userId as string;
+
   const { statusCode, body } = await getBookByIdController.execute(request);
 
   return response.status(statusCode).json(body);
