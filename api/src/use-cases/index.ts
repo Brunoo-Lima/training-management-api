@@ -6,6 +6,7 @@ export * from './user/update-user';
 export * from './book/create-book';
 export * from './book/get-book-by-id';
 export * from './book/get-my-books';
+export * from './book/delete-book';
 
 export * from './auth/login';
 export * from './auth/refresh-token';
