@@ -10,7 +10,9 @@ export interface IBook {
   total_pages: number;
   start_date?: Date | null;
   end_date?: Date | null;
-
   created_at: Date;
   updated_at?: Date;
 }
+
+export type IUpdateBook = Partial<IBook> &
+  Omit<IBook, 'id' | 'user_id' | 'created_at'>;

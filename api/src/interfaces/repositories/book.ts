@@ -19,3 +19,7 @@ export interface IGetMyBooksRepository {
 export interface IDeleteBookRepository {
   execute(bookId: string): Promise<IBook | null>;
 }
+
+export interface IUpdateBookRepository {
+  execute(bookId: string, book: Partial<IBook>): Promise<IBook | null>;
+}
