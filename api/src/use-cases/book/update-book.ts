@@ -42,7 +42,9 @@ export class UpdateBookUseCase {
       );
 
       if (bookWithSameTitle && bookWithSameTitle.id !== bookId) {
-        throw new BookAlreadyExistsError();
+        throw new BookAlreadyExistsError(
+          'Already exists a book with the provided title',
+        );
       }
     }
 

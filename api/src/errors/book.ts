@@ -1,6 +1,6 @@
 export class BookAlreadyExistsError extends Error {
-  constructor() {
-    super('Book already exists');
+  constructor(message?: string) {
+    super(message || 'Book already exists');
     this.name = 'BookAlreadyExistsError';
   }
 }
