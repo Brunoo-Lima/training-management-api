@@ -1,4 +1,4 @@
-import type { IBook } from '../../@types/IBook';
+import type { IBook, IUpdateBook } from '../../@types/IBook';
 
 export interface ICreateBookUseCase {
   execute(book: IBook): Promise<IBook>;
@@ -14,4 +14,12 @@ export interface IGetMyBooksUseCase {
 
 export interface IDeleteBookUseCase {
   execute(bookId: string, userId: string): Promise<IBook | null>;
+}
+
+export interface IUpdateBookUseCase {
+  execute(
+    bookId: string,
+    userId: string,
+    book: IUpdateBook,
+  ): Promise<IBook | null>;
 }
