@@ -19,6 +19,7 @@ export class GetBookByIdController {
   async execute(request: Request) {
     try {
       const id = request.params.id as string;
+      const userId = request.userId as string;
 
       const isIdValid = checkIfIdIsValid(id);
 
@@ -26,7 +27,7 @@ export class GetBookByIdController {
         return invalidIdResponse();
       }
 
-      const book = await this.getBookByIdUseCase.execute(id);
+      const book = await this.getBookByIdUseCase.execute(id, userId);
       return ok(book);
     } catch (error) {
       if (error instanceof BookNotFoundError) {
