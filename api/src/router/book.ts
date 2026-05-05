@@ -2,6 +2,7 @@ import { Router, type IRouter, type Request, type Response } from 'express';
 import {
   makeCreateBookController,
   makeGetBookByIdController,
+  makeGetMyBooksController,
 } from '../factories/controllers';
 import { auth } from '../middlewares/auth';
 
@@ -21,6 +22,16 @@ bookRoutes.get('/:id', auth, async (request: Request, response: Response) => {
   const getBookByIdController = makeGetBookByIdController();
 
   const { statusCode, body } = await getBookByIdController.execute(request);
+
+  return response.status(statusCode).json(body);
+});
+
+bookRoutes.get('/', auth, async (request: Request, response: Response) => {
+  const getMyBooksController = makeGetMyBooksController();
+
+  request.params.userId = request.userId as string;
+
+  const { statusCode, body } = await getMyBooksController.execute(request);
 
   return response.status(statusCode).json(body);
 });

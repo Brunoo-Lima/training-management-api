@@ -1,10 +1,20 @@
-import { CreateBookController, GetBookByIdController } from '../../controllers';
+import {
+  CreateBookController,
+  GetBookByIdController,
+  GetMyBooksController,
+} from '../../controllers';
 import {
   PostgresCreateBookRepository,
   PostgresGetBookByIdRepository,
   PostgresGetBookByTitleRepository,
+  PostgresGetMyBooksRepository,
+  PostgresGetUserByIdRepository,
 } from '../../repositories/postgres';
-import { CreateBookUseCase, GetBookByIdUseCase } from '../../use-cases';
+import {
+  CreateBookUseCase,
+  GetBookByIdUseCase,
+  GetMyBooksUseCase,
+} from '../../use-cases';
 
 export const makeCreateBookController = () => {
   const createBookRepository = new PostgresCreateBookRepository();
@@ -26,4 +36,17 @@ export const makeGetBookByIdController = () => {
   const getBookByIdController = new GetBookByIdController(getBookByIdUseCase);
 
   return getBookByIdController;
+};
+
+export const makeGetMyBooksController = () => {
+  const getMyBooksRepository = new PostgresGetMyBooksRepository();
+  const getUserByIdRepository = new PostgresGetUserByIdRepository();
+  const getMyBooksUseCase = new GetMyBooksUseCase(
+    getMyBooksRepository,
+    getUserByIdRepository,
+  );
+
+  const getMyBooksController = new GetMyBooksController(getMyBooksUseCase);
+
+  return getMyBooksController;
 };
