@@ -1,6 +1,7 @@
 import { Router, type IRouter, type Request, type Response } from 'express';
 import {
   makeCreateBookController,
+  makeDeleteBookController,
   makeGetBookByIdController,
   makeGetMyBooksController,
 } from '../factories/controllers';
@@ -15,7 +16,7 @@ bookRoutes.post('/', auth, async (request: Request, response: Response) => {
 
   const { statusCode, body } = await createBookController.execute(request);
 
-  return response.status(statusCode).json(body);
+  return response.status(statusCode).send(body);
 });
 
 bookRoutes.get('/:id', auth, async (request: Request, response: Response) => {
@@ -25,7 +26,7 @@ bookRoutes.get('/:id', auth, async (request: Request, response: Response) => {
 
   const { statusCode, body } = await getBookByIdController.execute(request);
 
-  return response.status(statusCode).json(body);
+  return response.status(statusCode).send(body);
 });
 
 bookRoutes.get('/', auth, async (request: Request, response: Response) => {
@@ -35,7 +36,21 @@ bookRoutes.get('/', auth, async (request: Request, response: Response) => {
 
   const { statusCode, body } = await getMyBooksController.execute(request);
 
-  return response.status(statusCode).json(body);
+  return response.status(statusCode).send(body);
 });
+
+bookRoutes.delete(
+  '/:id',
+  auth,
+  async (request: Request, response: Response) => {
+    const deleteBookController = makeDeleteBookController();
+
+    request.params.userId = request.userId as string;
+
+    const { statusCode, body } = await deleteBookController.execute(request);
+
+    return response.status(statusCode).send(body);
+  },
+);
 
 export { bookRoutes };

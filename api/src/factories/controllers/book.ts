@@ -1,10 +1,12 @@
 import {
   CreateBookController,
+  DeleteBookController,
   GetBookByIdController,
   GetMyBooksController,
 } from '../../controllers';
 import {
   PostgresCreateBookRepository,
+  PostgresDeleteBookRepository,
   PostgresGetBookByIdRepository,
   PostgresGetBookByTitleRepository,
   PostgresGetMyBooksRepository,
@@ -12,6 +14,7 @@ import {
 } from '../../repositories/postgres';
 import {
   CreateBookUseCase,
+  DeleteBookUseCase,
   GetBookByIdUseCase,
   GetMyBooksUseCase,
 } from '../../use-cases';
@@ -49,4 +52,17 @@ export const makeGetMyBooksController = () => {
   const getMyBooksController = new GetMyBooksController(getMyBooksUseCase);
 
   return getMyBooksController;
+};
+
+export const makeDeleteBookController = () => {
+  const deleteBookRepository = new PostgresDeleteBookRepository();
+  const getBookByIdRepository = new PostgresGetBookByIdRepository();
+  const deleteBookUseCase = new DeleteBookUseCase(
+    deleteBookRepository,
+    getBookByIdRepository,
+  );
+
+  const deleteBookController = new DeleteBookController(deleteBookUseCase);
+
+  return deleteBookController;
 };
