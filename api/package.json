@@ -7,7 +7,10 @@
     "dev": "tsx watch src/server.ts",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
-    "eslint:check": "eslint src --ext .ts"
+    "eslint:check": "eslint src --ext .ts",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "keywords": [],
   "author": "",
@@ -28,11 +31,13 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@faker-js/faker": "^10.4.0",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.5.0",
     "@types/pg": "^8.20.0",
     "@types/validator": "^13.15.10",
+    "@vitest/coverage-v8": "4.1.5",
     "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.4.0",
@@ -40,6 +45,7 @@
     "ts-node-dev": "^2.0.0",
     "tsx": "^4.21.0",
     "typescript": "^6.0.2",
-    "typescript-eslint": "^8.58.0"
+    "typescript-eslint": "^8.58.0",
+    "vitest": "^4.1.5"
   }
 }
