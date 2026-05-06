@@ -11,3 +11,5 @@ export * from './book/update-book';
 
 export * from './auth/login';
 export * from './auth/refresh-token';
+
+export * from './reading-log/register-reading-log';
