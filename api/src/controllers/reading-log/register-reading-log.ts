@@ -22,7 +22,7 @@ export class RegisterReadingLogController {
   async execute(request: Request) {
     try {
       const userId = request.params.userId as string;
-      const bookId = request.params.bookId as string;
+      const bookId = request.query.bookId as string;
 
       const isUserIdValid = checkIfIdIsValid(userId);
 
