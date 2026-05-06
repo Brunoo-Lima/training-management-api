@@ -1,3 +1,4 @@
+import type { StatusReading } from '../../../generated/prisma/enums';
 import type { IBook, IUpdateBook } from '../../@types/IBook';
 
 export interface ICreateBookUseCase {
@@ -9,7 +10,12 @@ export interface IGetBookByIdUseCase {
 }
 
 export interface IGetMyBooksUseCase {
-  execute(userId: string): Promise<IBook[]>;
+  execute(
+    userId: string,
+    title?: string,
+    genre?: string,
+    status?: StatusReading,
+  ): Promise<IBook[]>;
 }
 
 export interface IDeleteBookUseCase {

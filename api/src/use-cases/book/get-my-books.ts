@@ -1,3 +1,4 @@
+import type { StatusReading } from '../../../generated/prisma/enums';
 import { UserNotFoundError } from '../../errors';
 import type {
   IGetMyBooksRepository,
@@ -16,14 +17,24 @@ export class GetMyBooksUseCase {
     this.getUserByIdRepository = getUserByIdRepository;
   }
 
-  async execute(userId: string) {
+  async execute(
+    userId: string,
+    search?: string,
+    genre?: string,
+    status?: StatusReading,
+  ) {
     const user = await this.getUserByIdRepository.execute(userId);
 
     if (!user) {
       throw new UserNotFoundError();
     }
 
-    const books = await this.getMyBooksRepository.execute(user.id);
+    const books = await this.getMyBooksRepository.execute(
+      user.id,
+      search,
+      genre,
+      status,
+    );
 
     return books;
   }
