@@ -1,5 +1,10 @@
 import type { StatusReading } from '../../../generated/prisma/enums';
-import { UserNotFoundError } from '../../errors';
+import {
+  InvalidBookGenreError,
+  InvalidBookStatusError,
+  InvalidBookTitleError,
+  UserNotFoundError,
+} from '../../errors';
 import type {
   IGetMyBooksRepository,
   IGetUserByIdRepository,
@@ -27,6 +32,21 @@ export class GetMyBooksUseCase {
 
     if (!user) {
       throw new UserNotFoundError();
+    }
+
+    if (
+      status &&
+      !['READING', 'COMPLETED', 'WISHLIST', 'ABANDONED'].includes(status)
+    ) {
+      throw new InvalidBookStatusError(status);
+    }
+
+    if (search && typeof search !== 'string') {
+      throw new InvalidBookTitleError('Search must be a string');
+    }
+
+    if (genre && typeof genre !== 'string') {
+      throw new InvalidBookGenreError(genre);
     }
 
     const books = await this.getMyBooksRepository.execute(
