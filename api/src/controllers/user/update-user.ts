@@ -1,5 +1,4 @@
 import type { Request } from 'express';
-import type { UpdateUserUseCase } from '../../use-cases';
 import {
   badRequest,
   checkIfIdIsValid,
@@ -10,11 +9,12 @@ import {
 import { ZodError } from 'zod';
 import { EmailAlreadyInUseError } from '../../errors';
 import { updateUserSchema } from '../../schemas';
+import type { IUpdateUserUseCase } from '../../interfaces/use-cases';
 
 export class UpdateUserController {
-  private updateUserUseCase: UpdateUserUseCase;
+  private updateUserUseCase: IUpdateUserUseCase;
 
-  constructor(updateUserUseCase: UpdateUserUseCase) {
+  constructor(updateUserUseCase: IUpdateUserUseCase) {
     this.updateUserUseCase = updateUserUseCase;
   }
 
@@ -47,7 +47,6 @@ export class UpdateUserController {
         return badRequest({ message: error.message });
       }
 
-      console.log(error);
       return serverError();
     }
   }

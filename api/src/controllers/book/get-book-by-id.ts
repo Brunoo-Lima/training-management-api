@@ -34,7 +34,6 @@ export class GetBookByIdController {
         return badRequest({ message: error.message });
       }
 
-      console.log(error);
       return serverError();
     }
   }

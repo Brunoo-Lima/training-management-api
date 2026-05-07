@@ -34,7 +34,6 @@ export class GetReadingLogController {
         return userNotFoundResponse();
       }
 
-      console.log(error);
       return serverError();
     }
   }

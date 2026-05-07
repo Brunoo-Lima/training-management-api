@@ -32,7 +32,6 @@ export class CreateBookController {
         return badRequest({ message: error.message });
       }
 
-      console.error(error);
       return serverError();
     }
   }

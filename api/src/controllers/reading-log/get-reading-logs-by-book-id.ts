@@ -49,7 +49,6 @@ export class GetReadingLogsByBookIdController {
         return userNotFoundResponse();
       }
 
-      console.log(error);
       return serverError();
     }
   }

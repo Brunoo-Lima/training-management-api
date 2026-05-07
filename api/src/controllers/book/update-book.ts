@@ -68,7 +68,6 @@ export class UpdateBookController {
         return badRequest({ message: error.message });
       }
 
-      console.log(error);
       return serverError();
     }
   }

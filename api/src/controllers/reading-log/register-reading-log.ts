@@ -60,7 +60,6 @@ export class RegisterReadingLogController {
         return bookNotFoundResponse();
       }
 
-      console.log(error);
       return serverError();
     }
   }

@@ -23,7 +23,6 @@ export class DeleteBookController {
         return bookNotFoundResponse();
       }
 
-      console.log(error);
       return serverError();
     }
   }

@@ -34,7 +34,6 @@ export class GetUserByIdController {
         return userNotFoundResponse();
       }
 
-      console.log(error);
       return serverError();
     }
   }

@@ -34,7 +34,6 @@ export class DeleteUserController {
         return userNotFoundResponse();
       }
 
-      console.log(error);
       return serverError();
     }
   }

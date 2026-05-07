@@ -63,7 +63,6 @@ export class GetMyBooksController {
         return badRequest({ message: error.message });
       }
 
-      console.log(error);
       return serverError();
     }
   }
