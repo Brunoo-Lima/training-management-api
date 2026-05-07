@@ -14,4 +14,4 @@ export * from './auth/refresh-token';
 
 export * from './reading-log/register-reading-log';
 export * from './reading-log/get-reading-log';
-export * from './reading-log/get-reading-log-book-id';
+export * from './reading-log/get-reading-logs-by-book-id';

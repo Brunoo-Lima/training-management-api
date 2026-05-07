@@ -10,7 +10,7 @@ import {
   userNotFoundResponse,
 } from '../helpers';
 
-export class GetReadingLogBookIdController {
+export class GetReadingLogsByBookIdController {
   private getReadingLogBookIdUseCase: IGetReadingLogBookIdUseCase;
 
   constructor(getReadingLogBookIdUseCase: IGetReadingLogBookIdUseCase) {
