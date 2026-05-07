@@ -1,21 +1,21 @@
 import { BookNotFoundError, UserNotFoundError } from '../../errors';
 import type {
   IGetBookByIdRepository,
-  IGetReadingLogBookIdRepository,
+  IGetReadingLogsByBookIdRepository,
   IGetUserByIdRepository,
 } from '../../interfaces/repositories';
 
-export class GetReadingLogBookIdUseCase {
-  private getReadingLogBookIdRepository: IGetReadingLogBookIdRepository;
+export class GetReadingLogsByBookIdUseCase {
+  private getReadingLogsByBookIdRepository: IGetReadingLogsByBookIdRepository;
   private getBookIdRepository: IGetBookByIdRepository;
   private getUserByIdRepository: IGetUserByIdRepository;
 
   constructor(
-    getReadingLogBookIdRepository: IGetReadingLogBookIdRepository,
+    getReadingLogsByBookIdRepository: IGetReadingLogsByBookIdRepository,
     getBookIdRepository: IGetBookByIdRepository,
     getUserByIdRepository: IGetUserByIdRepository,
   ) {
-    this.getReadingLogBookIdRepository = getReadingLogBookIdRepository;
+    this.getReadingLogsByBookIdRepository = getReadingLogsByBookIdRepository;
     this.getBookIdRepository = getBookIdRepository;
     this.getUserByIdRepository = getUserByIdRepository;
   }
@@ -33,7 +33,7 @@ export class GetReadingLogBookIdUseCase {
       throw new BookNotFoundError();
     }
 
-    const readingLog = await this.getReadingLogBookIdRepository.execute(
+    const readingLog = await this.getReadingLogsByBookIdRepository.execute(
       book.id,
       user.id,
     );

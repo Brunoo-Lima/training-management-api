@@ -8,6 +8,6 @@ export interface IGetReadingLogRepository {
   execute(userId: string): Promise<IReadingLog[]>;
 }
 
-export interface IGetReadingLogBookIdRepository {
+export interface IGetReadingLogsByBookIdRepository {
   execute(bookId: string, userId: string): Promise<IReadingLog[]>;
 }

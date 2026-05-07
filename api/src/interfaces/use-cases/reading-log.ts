@@ -12,6 +12,6 @@ export interface IGetReadingLogUseCase {
   execute(userId: string): Promise<IReadingLog[]>;
 }
 
-export interface IGetReadingLogBookIdUseCase {
+export interface IGetReadingLogsByBookIdUseCase {
   execute(bookId: string, userId: string): Promise<IReadingLog[]>;
 }

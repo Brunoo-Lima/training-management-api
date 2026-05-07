@@ -1,6 +1,6 @@
 import type { Request } from 'express';
 import { BookNotFoundError, UserNotFoundError } from '../../errors';
-import type { IGetReadingLogBookIdUseCase } from '../../interfaces/use-cases';
+import type { IGetReadingLogsByBookIdUseCase } from '../../interfaces/use-cases';
 import {
   bookNotFoundResponse,
   checkIfIdIsValid,
@@ -11,9 +11,9 @@ import {
 } from '../helpers';
 
 export class GetReadingLogsByBookIdController {
-  private getReadingLogBookIdUseCase: IGetReadingLogBookIdUseCase;
+  private getReadingLogBookIdUseCase: IGetReadingLogsByBookIdUseCase;
 
-  constructor(getReadingLogBookIdUseCase: IGetReadingLogBookIdUseCase) {
+  constructor(getReadingLogBookIdUseCase: IGetReadingLogsByBookIdUseCase) {
     this.getReadingLogBookIdUseCase = getReadingLogBookIdUseCase;
   }
 
