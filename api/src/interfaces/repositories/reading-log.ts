@@ -7,3 +7,7 @@ export interface IRegisterReadingLogRepository {
 export interface IGetReadingLogRepository {
   execute(userId: string): Promise<IReadingLog[]>;
 }
+
+export interface IGetReadingLogBookIdRepository {
+  execute(bookId: string, userId: string): Promise<IReadingLog[]>;
+}
