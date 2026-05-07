@@ -1,6 +1,12 @@
 import type { Request } from 'express';
 import type { IDeleteBookUseCase } from '../../interfaces/use-cases';
-import { bookNotFoundResponse, ok, serverError } from '../helpers';
+import {
+  bookNotFoundResponse,
+  checkIfIdIsValid,
+  invalidIdResponse,
+  ok,
+  serverError,
+} from '../helpers';
 import { BookNotFoundError } from '../../errors';
 
 export class DeleteBookController {
@@ -12,8 +18,15 @@ export class DeleteBookController {
 
   async execute(request: Request) {
     try {
-      const bookId = request.params.id as string;
-      const userId = request.userId as string;
+      const bookId = request.params.bookId as string;
+      const userId = request.params.userId as string;
+
+      const isBookIdValid = checkIfIdIsValid(bookId);
+      const isUserIdValid = checkIfIdIsValid(userId);
+
+      if (!isBookIdValid || !isUserIdValid) {
+        return invalidIdResponse();
+      }
 
       const book = await this.deleteBookUseCase.execute(bookId, userId);
 
