@@ -10,3 +10,16 @@ export const readingLog = {
   created_at: faker.date.anytime(),
   updated_at: faker.date.anytime(),
 };
+
+export const readingLogs = [
+  {
+    id: faker.string.uuid(),
+    book_id: faker.string.uuid(),
+    user_id: faker.string.uuid(),
+    pages_read: faker.number.int(),
+    notes_about_session: faker.lorem.sentence(),
+    date: faker.date.anytime(),
+    created_at: faker.date.anytime(),
+    updated_at: faker.date.anytime(),
+  },
+];
