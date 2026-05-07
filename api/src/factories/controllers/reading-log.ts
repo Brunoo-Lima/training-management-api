@@ -1,10 +1,17 @@
-import { RegisterReadingLogController } from '../../controllers';
+import {
+  GetReadingLogController,
+  RegisterReadingLogController,
+} from '../../controllers';
 import {
   PostgresGetBookByIdRepository,
+  PostgresGetReadingLogRepository,
   PostgresGetUserByIdRepository,
   PostgresRegisterReadingLogRepository,
 } from '../../repositories/postgres';
-import { RegisterReadingLogUseCase } from '../../use-cases';
+import {
+  GetReadingLogUseCase,
+  RegisterReadingLogUseCase,
+} from '../../use-cases';
 
 export const makeRegisterReadingLogController = () => {
   const registerReadingLogRepository =
@@ -23,4 +30,20 @@ export const makeRegisterReadingLogController = () => {
   );
 
   return registerReadingLogController;
+};
+
+export const makeGetReadingLogController = () => {
+  const getReadingLogRepository = new PostgresGetReadingLogRepository();
+  const getUserByIdRepository = new PostgresGetUserByIdRepository();
+
+  const getReadingLogUseCase = new GetReadingLogUseCase(
+    getReadingLogRepository,
+    getUserByIdRepository,
+  );
+
+  const getReadingLogController = new GetReadingLogController(
+    getReadingLogUseCase,
+  );
+
+  return getReadingLogController;
 };
