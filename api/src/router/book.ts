@@ -41,7 +41,7 @@ bookRoutes.get('/', auth, async (request: Request, response: Response) => {
 });
 
 bookRoutes.delete(
-  '/:id',
+  '/:bookId',
   auth,
   async (request: Request, response: Response) => {
     const deleteBookController = makeDeleteBookController();
