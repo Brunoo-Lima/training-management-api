@@ -1,6 +1,6 @@
 import { prisma } from '../../../lib/prisma';
 
-export class PostgresGetReadingLogBookIdRepository {
+export class PostgresGetReadingLogsByBookIdRepository {
   async execute(bookId: string, userId: string) {
     return await prisma.readingLog.findMany({
       where: {
