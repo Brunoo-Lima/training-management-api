@@ -13,3 +13,4 @@ export * from './auth/login';
 export * from './auth/refresh-token';
 
 export * from './reading-log/register-reading-log';
+export * from './reading-log/get-reading-log';
