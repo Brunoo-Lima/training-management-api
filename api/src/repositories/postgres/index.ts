@@ -12,3 +12,4 @@ export * from './book/delete-book';
 export * from './book/update-book';
 
 export * from './reading-log/register-reading-log';
+export * from './reading-log/get-reading-log';
