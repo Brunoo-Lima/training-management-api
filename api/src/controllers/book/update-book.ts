@@ -29,14 +29,9 @@ export class UpdateBookController {
       const userId = request.params.userId as string;
 
       const isBookIdValid = checkIfIdIsValid(bookId);
-
-      if (!isBookIdValid) {
-        return invalidIdResponse();
-      }
-
       const isUserIdValid = checkIfIdIsValid(userId);
 
-      if (!isUserIdValid) {
+      if (!isBookIdValid || !isUserIdValid) {
         return invalidIdResponse();
       }
 

@@ -26,6 +26,7 @@ export class GetMyBooksController {
   async execute(request: Request) {
     try {
       const userId = request.params.userId as string;
+
       const { search, genre, status } = request.query as {
         search?: string;
         genre?: string;
