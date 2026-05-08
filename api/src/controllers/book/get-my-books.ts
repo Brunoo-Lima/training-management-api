@@ -27,17 +27,17 @@ export class GetMyBooksController {
     try {
       const userId = request.params.userId as string;
 
-      const { search, genre, status } = request.query as {
-        search?: string;
-        genre?: string;
-        status?: StatusReading;
-      };
-
       const isIdValid = checkIfIdIsValid(userId);
 
       if (!isIdValid) {
         return invalidIdResponse();
       }
+
+      const { search, genre, status } = request.query as {
+        search?: string;
+        genre?: string;
+        status?: StatusReading;
+      };
 
       const books = await this.getMyBooksUseCase.execute(
         userId,
