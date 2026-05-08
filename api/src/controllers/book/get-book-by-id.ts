@@ -1,7 +1,7 @@
 import type { Request } from 'express';
 import type { IGetBookByIdUseCase } from '../../interfaces/use-cases';
 import {
-  badRequest,
+  bookNotFoundResponse,
   checkIfIdIsValid,
   invalidIdResponse,
   ok,
@@ -18,20 +18,22 @@ export class GetBookByIdController {
 
   async execute(request: Request) {
     try {
-      const id = request.params.id as string;
-      const userId = request.userId as string;
+      const bookId = request.params.bookId as string;
+      const userId = request.params.userId as string;
 
-      const isIdValid = checkIfIdIsValid(id);
+      const isBookIdValid = checkIfIdIsValid(bookId);
+      const isUserIdValid = checkIfIdIsValid(userId);
 
-      if (!isIdValid) {
+      if (!isBookIdValid || !isUserIdValid) {
         return invalidIdResponse();
       }
 
-      const book = await this.getBookByIdUseCase.execute(id, userId);
+      const book = await this.getBookByIdUseCase.execute(bookId, userId);
+
       return ok(book);
     } catch (error) {
       if (error instanceof BookNotFoundError) {
-        return badRequest({ message: error.message });
+        return bookNotFoundResponse();
       }
 
       return serverError();

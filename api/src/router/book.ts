@@ -20,15 +20,19 @@ bookRoutes.post('/', auth, async (request: Request, response: Response) => {
   return response.status(statusCode).send(body);
 });
 
-bookRoutes.get('/:id', auth, async (request: Request, response: Response) => {
-  const getBookByIdController = makeGetBookByIdController();
+bookRoutes.get(
+  '/:bookId',
+  auth,
+  async (request: Request, response: Response) => {
+    const getBookByIdController = makeGetBookByIdController();
 
-  request.params.userId = request.userId as string;
+    request.params.userId = request.userId as string;
 
-  const { statusCode, body } = await getBookByIdController.execute(request);
+    const { statusCode, body } = await getBookByIdController.execute(request);
 
-  return response.status(statusCode).send(body);
-});
+    return response.status(statusCode).send(body);
+  },
+);
 
 bookRoutes.get('/', auth, async (request: Request, response: Response) => {
   const getMyBooksController = makeGetMyBooksController();
