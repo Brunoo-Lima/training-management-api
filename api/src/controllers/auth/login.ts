@@ -1,6 +1,6 @@
 import type { Request } from 'express';
 import type { ILoginUseCase } from '../../interfaces/use-cases';
-import { badRequest, ok, serverError } from '../helpers';
+import { badRequest, ok, serverError, userNotFoundResponse } from '../helpers';
 import { loginSchema } from '../../schemas';
 import { ZodError } from 'zod';
 import { InvalidPasswordError, UserNotFoundError } from '../../errors';
@@ -31,10 +31,9 @@ export class LoginController {
       }
 
       if (error instanceof UserNotFoundError) {
-        return badRequest({ message: error.message });
+        return userNotFoundResponse();
       }
 
-      console.log(error);
       return serverError();
     }
   }
