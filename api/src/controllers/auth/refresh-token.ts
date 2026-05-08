@@ -30,7 +30,6 @@ export class RefreshTokenController {
         return unauthorized();
       }
 
-      console.log(error);
       return serverError();
     }
   }
