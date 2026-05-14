@@ -36,7 +36,7 @@ export class UpdateBookUseCase {
       throw new BookNotFoundError();
     }
 
-    if (book.title) {
+    if (book.title && book.title.trim()) {
       const bookWithSameTitle = await this.getBookByTitleRepository.execute(
         book.title,
       );
