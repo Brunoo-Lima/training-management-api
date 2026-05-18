@@ -4,7 +4,7 @@ import {
   makeGetReadingLogController,
   makeGetReadingLogsByBookIdController,
   makeRegisterReadingLogController,
-} from '../factories/controllers/reading-log';
+} from '../factories/controllers';
 
 const readingLogRoutes: IRouter = Router();
 
