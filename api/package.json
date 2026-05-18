@@ -5,6 +5,7 @@
   "scripts": {
     "postinstall": "prisma generate",
     "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
     "eslint:check": "eslint src --ext .ts",
