@@ -17,3 +17,4 @@ export * from './reading-log/get-reading-logs-by-book-id';
 
 export * from './goal/create-goal';
 export * from './goal/get-goals';
+export * from './goal/get-goals-by-id';

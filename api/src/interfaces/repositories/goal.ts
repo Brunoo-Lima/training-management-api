@@ -7,3 +7,7 @@ export interface ICreateGoalRepository {
 export interface IGetGoalsRepository {
   execute(userId: string): Promise<IGoal[] | null>;
 }
+
+export interface IGetGoalByIdRepository {
+  execute(goalId: string): Promise<IGoal | null>;
+}
