@@ -5,5 +5,5 @@ export interface ICreateGoalRepository {
 }
 
 export interface IGetGoalsRepository {
-  execute(userId: string): Promise<IGoal[]>;
+  execute(userId: string): Promise<IGoal[] | null>;
 }
