@@ -9,6 +9,7 @@
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
     "eslint:check": "eslint src --ext .ts",
+    "prettier:check": "prettier --check src",
     "test": "vitest --silent --passWithNoTests",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage"
