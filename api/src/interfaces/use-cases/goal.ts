@@ -7,3 +7,7 @@ export interface ICreateGoalUseCase {
 export interface IGetGoalsUseCase {
   execute(userId: string): Promise<IGoal[] | null>;
 }
+
+export interface IGetGoalByIdUseCase {
+  execute(goalId: string): Promise<IGoal | null>;
+}
